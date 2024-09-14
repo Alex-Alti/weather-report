@@ -5,7 +5,6 @@ from PIL import Image, ImageFont, ImageDraw
 import Adafruit_ILI9341 as TFT
 import Adafruit_GPIO as GPIO
 import Adafruit_GPIO.SPI as SPI
-import Adafruit_ILI9341 as TFT
 from pyowm import OWM
 
 # Config file
@@ -26,6 +25,7 @@ RST = 25
 SPI_PORT = 0
 SPI_DEVICE = 0
 
+# Create an instance of the TFT display
 display = TFT.ILI9341(dc=DC, rst=RST, spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
 # Clear the display
@@ -48,7 +48,7 @@ draw = ImageDraw.Draw(img)
 # OpenWeatherMap Integration
 owm = OWM(api)
 mgr = owm.weather_manager()
-weather = mgr.weather_at_place(city+","+country).weather
+weather = mgr.weather_at_place(city + "," + country).weather
 one_call = mgr.one_call(lat, lon)
 
 # Weather data
